@@ -4,27 +4,26 @@ A simple webserver for our services running at the hackerspace.
 
 ## Description
 
-This service is a central proxy that makes your applications automatically accessible over HTTP(S). It connects to the Docker socket and dynamically reconfigures itself. 
+This service is a central proxy that makes your applications automatically accessible over HTTP(S). It connects to the Docker socket and dynamically reconfigures itself.
 
 ## Usage
 
 Add Ingress to your cluster by creating another stack:
 
-```
-$ docker stack deploy --compose-file docker-compose.yml ingress
+```Shell
+docker stack deploy --compose-file docker-compose.yml ingress
 ```
 
 Then add add a label you your application's Compose file. Example:
 
-```
+```YAML
 ---
 
 version: '3'
 
 services:
   backend:
-    image: labello
-    build: .
+    image: chaosdorf/labello
     labels:
       - "traefik.frontend.rule=Host: labello.chaosdorf.space"
 ```
