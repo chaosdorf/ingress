@@ -1,3 +1,7 @@
+[entryPoints]
+  [entryPoints.http]
+    address = "[::]:80"
+
 [docker]
 domain = "chaosdorf.space"
 
